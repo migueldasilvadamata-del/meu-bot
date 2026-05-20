@@ -10,257 +10,288 @@ body{background:#050505;color:#fff;min-height:100vh}
 .page{display:flex;justify-content:center;padding:20px 16px;min-height:100vh}
 .wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:14px}
 .btn-green{background:#25D366;border:none;border-radius:14px;color:#fff;padding:16px;font-size:16px;font-weight:800;cursor:pointer;width:100%}
-.btn-green:disabled{opacity:0.4}
 .btn-back{background:none;border:none;color:#555;font-size:16px;cursor:pointer;padding:0}
 .card{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
 .lbl{color:#777;font-size:12px;font-weight:600}
 .inp{background:#141414;border:1px solid #222;border-radius:10px;color:#fff;padding:12px 14px;font-size:15px;outline:none;width:100%;font-family:inherit}
 textarea.inp{resize:vertical;height:65px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.seg-btn{background:#141414;border:1px solid #222;border-radius:10px;padding:10px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:#777;font-size:10px;line-height:1.2}
+.seg-btn{background:#141414;border:1px solid #222;border-radius:10px;padding:10px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:#777;font-size:10px}
 .seg-btn.on{background:rgba(37,211,102,0.12);border-color:#25D366;color:#25D366}
-.hidden{display:none!important}
-.spinner{width:36px;height:36px;border:3px solid #1a1a1a;border-top:3px solid #25D366;border-radius:50%;animation:spin 0.8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
 .hero{background:linear-gradient(160deg,#0a1a0a,#111);border:1px solid #1a2a1a;border-radius:20px;padding:28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
 .hero-emoji{font-size:52px}
 .hero-title{font-size:26px;font-weight:900;line-height:1.2}
 .hero-sub{color:#777;font-size:15px;line-height:1.6}
 .hero-badge{background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);border-radius:20px;padding:6px 16px;color:#25D366;font-size:13px;font-weight:600}
-.feat{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:14px;padding:16px;display:flex;gap:14px;align-items:flex-start}
+.feat{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:14px;padding:16px;display:flex;gap:14px}
 .feat-icon{font-size:24px;background:#141414;border-radius:10px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .feat-t{font-size:15px;font-weight:700;margin-bottom:3px}
 .feat-s{color:#666;font-size:13px}
 .btn-note{color:#333;font-size:12px;text-align:center}
-#screen-chat{display:flex;flex-direction:column;height:100vh;max-width:480px;margin:0 auto;background:#ECE5DD}
+#chat{flex-direction:column;height:100vh;max-width:480px;margin:0 auto;background:#ECE5DD}
 .chat-head{background:#075E54;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0}
 .chat-av{width:42px;height:42px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;flex-shrink:0}
 .chat-name{color:#fff;font-weight:700;font-size:15px}
 .chat-status{color:#a8d8b9;font-size:12px}
-.chat-badge{border-radius:20px;padding:4px 10px;font-size:12px;font-weight:700}
-.chat-banner{background:#FEF3C7;border-bottom:1px solid #FCD34D;padding:10px 16px;font-size:13px;color:#92400E;text-align:center}
 .chat-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:4px}
 .msg-row{display:flex}
 .msg-row.user{justify-content:flex-end}
-.msg-row.bot{justify-content:flex-start}
-.bubble{max-width:75%;border-radius:12px;padding:8px 12px;font-size:14px;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,0.15);color:#111;white-space:pre-wrap}
+.bubble{max-width:75%;border-radius:12px;padding:8px 12px;font-size:14px;line-height:1.5;color:#111;white-space:pre-wrap}
 .bubble.bot{background:#fff;border-top-left-radius:2px}
 .bubble.user{background:#DCF8C6;border-top-right-radius:2px}
-.typing-dots{display:flex;gap:4px;padding:4px;align-items:center}
 .dot{width:7px;height:7px;border-radius:50%;background:#999;display:inline-block;animation:bounce 1.2s infinite}
 .dot:nth-child(2){animation-delay:0.2s}
 .dot:nth-child(3){animation-delay:0.4s}
 @keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
-.chat-input-bar{background:#F0F0F0;padding:8px 12px;display:flex;gap:8px;border-top:1px solid #ddd;flex-shrink:0}
+.chat-bar{background:#F0F0F0;padding:8px 12px;display:flex;gap:8px;border-top:1px solid #ddd;flex-shrink:0}
 .chat-inp{flex:1;background:#fff;border:none;border-radius:24px;padding:10px 16px;font-size:14px;outline:none}
-.send-btn{background:#25D366;border:none;border-radius:50%;width:42px;height:42px;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.send-btn:disabled{opacity:0.4}
-.admin-bar{background:#f5f5f5;border-top:1px solid #e0e0e0;padding:7px 16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
-.admin-bar span{color:#aaa;font-size:11px}
-.admin-bar button{background:none;border:1px solid #ddd;border-radius:8px;padding:4px 10px;font-size:11px;color:#888;cursor:pointer}
+.send-btn{background:#25D366;border:none;border-radius:50%;width:42px;height:42px;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0}
 .pw-card{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
-.pw-title{font-size:22px;font-weight:800}
-.pw-sub{color:#666;font-size:14px;line-height:1.6;max-width:320px}
 .pw-contact{background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:12px;padding:14px;text-align:left;width:100%}
 .pw-contact-title{color:#25D366;font-size:13px;font-weight:700;margin-bottom:6px}
 .pw-contact-text{color:#888;font-size:13px;line-height:1.6}
-.code-inp{background:#141414;border:2px solid #222;border-radius:10px;color:#fff;padding:14px;font-size:22px;font-weight:800;letter-spacing:6px;outline:none;width:100%;text-align:center;font-family:monospace;transition:border-color 0.2s}
-.code-inp.error{border-color:#EF4444;color:#EF4444}
-.code-inp.success{border-color:#25D366;color:#25D366}
-.code-msg{font-size:13px}
-.code-msg.error{color:#EF4444}
-.code-msg.success{color:#25D366}
-.reset-btn{background:none;border:none;color:#333;font-size:12px;cursor:pointer}
-#screen-admin{display:flex;align-items:flex-start;justify-content:center;min-height:100vh;padding:20px 16px}
+.code-inp{background:#141414;border:2px solid #222;border-radius:10px;color:#fff;padding:14px;font-size:22px;font-weight:800;letter-spacing:6px;outline:none;width:100%;text-align:center;font-family:monospace}
 .admin-card{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:20px;padding:28px;width:100%;max-width:380px;display:flex;flex-direction:column;gap:16px}
-.code-result{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:14px;padding:20px;text-align:center}
-.code-month{color:#555;font-size:12px;margin-bottom:8px}
-.code-value{color:#25D366;font-size:32px;font-weight:900;letter-spacing:4px;margin-bottom:14px;font-family:monospace}
-.copy-msg-btn{background:#1a1a1a;border:1px solid #252525;border-radius:8px;color:#888;padding:8px 16px;font-size:13px;cursor:pointer}
-.how-it-works{background:#141414;border-radius:12px;padding:14px}
-.how-title{color:#F59E0B;font-size:12px;font-weight:700;margin-bottom:8px}
-.how-text{color:#666;font-size:12px;line-height:1.8}
+.code-result{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:14px;padding:20px;text-align:center;display:none}
+.code-value{color:#25D366;font-size:32px;font-weight:900;letter-spacing:4px;margin:8px 0 14px;font-family:monospace}
+.copy-btn{background:#1a1a1a;border:1px solid #252525;border-radius:8px;color:#888;padding:8px 16px;font-size:13px;cursor:pointer}
+.how{background:#141414;border-radius:12px;padding:14px}
+.how-t{color:#F59E0B;font-size:12px;font-weight:700;margin-bottom:8px}
+.how-s{color:#666;font-size:12px;line-height:1.8}
 </style>
 </head>
 <body>
-<div id="app"></div>
+
+<div id="landing">
+<div class="page"><div class="wrap">
+<div class="hero">
+<div class="hero-emoji">🤖</div>
+<div class="hero-title">Seu atendente no WhatsApp</div>
+<div class="hero-sub">Responde clientes 24h por dia, automático.</div>
+<div class="hero-badge">✨ 7 dias grátis — sem cartão</div>
+</div>
+<div class="feat"><div class="feat-icon">⚡</div><div><div class="feat-t">Responde na hora</div><div class="feat-s">Nenhum cliente fica sem resposta</div></div></div>
+<div class="feat"><div class="feat-icon">📅</div><div><div class="feat-t">Agenda sozinho</div><div class="feat-s">Marca horários automaticamente</div></div></div>
+<div class="feat"><div class="feat-icon">🧠</div><div><div class="feat-t">Fala do seu negócio</div><div class="feat-s">Configurado com seus serviços e preços</div></div></div>
+<button class="btn-green" onclick="go('setup')">Testar grátis 7 dias →</button>
+<div class="btn-note">Configura em 2 minutos. Sem cartão.</div>
+</div></div>
+</div>
+
+<div id="setup" style="display:none">
+<div class="page"><div class="wrap">
+<button class="btn-back" onclick="go('landing')">← Voltar</button>
+<div style="font-size:22px;font-weight:800;text-align:center">Configure seu atendente</div>
+<div style="color:#555;font-size:13px;text-align:center">Preencha com os dados do seu negócio</div>
+<div class="card">
+<div class="lbl">📛 Nome do negócio *</div>
+<div style="color:#555;font-size:11px;margin-bottom:4px">Como seu negócio se chama</div>
+<input class="inp" id="n" placeholder="Ex: Salão da Ana, Clínica Saúde Total...">
+<div class="lbl">📱 Seu WhatsApp * (com DDD, só números)</div>
+<div style="color:#555;font-size:11px;margin-bottom:4px">Para gerar seu código de acesso</div>
+<input class="inp" id="p" placeholder="Ex: 85986897912" type="tel">
+<div class="lbl">🏢 Tipo de negócio *</div>
+<div style="color:#555;font-size:11px;margin-bottom:4px">Toque para selecionar</div>
+<div class="grid4" id="segs"></div>
+<div class="lbl">🕐 Horário de funcionamento</div>
+<div style="color:#555;font-size:11px;margin-bottom:4px">Quando você atende</div>
+<input class="inp" id="h" placeholder="Ex: Seg a Sex das 8h às 18h">
+<div class="lbl">📍 Endereço</div>
+<div style="color:#555;font-size:11px;margin-bottom:4px">Rua, número, bairro e cidade</div>
+<input class="inp" id="a" placeholder="Ex: Rua das Flores, 123 - Centro">
+<div class="lbl">💰 Serviços e preços</div>
+<div style="color:#555;font-size:11px;margin-bottom:4px">Liste o que você oferece</div>
+<textarea class="inp" id="sv" placeholder="Ex: Corte R$60, Escova R$50..."></textarea>
+<div class="lbl">ℹ️ Outras informações</div>
+<div style="color:#555;font-size:11px;margin-bottom:4px">Pagamento, regras, etc</div>
+<textarea class="inp" id="ex" placeholder="Ex: Aceitamos PIX e cartão."></textarea>
+</div>
+<button class="btn-green" onclick="setup()">Ativar grátis por 7 dias 🚀</button>
+<div class="btn-note">Sem cartão. Cancele quando quiser.</div>
+</div></div>
+</div>
+
+<div id="chat" style="display:none">
+<div class="chat-head">
+<div class="chat-av" id="cav">B</div>
+<div style="flex:1"><div class="chat-name" id="cnm">Bot</div><div class="chat-status">🟢 Online</div></div>
+<div id="cbadge" style="border-radius:20px;padding:4px 10px;font-size:12px;font-weight:700"></div>
+</div>
+<div id="cbanner" style="display:none;background:#FEF3C7;border-bottom:1px solid #FCD34D;padding:10px 16px;font-size:13px;color:#92400E;text-align:center"></div>
+<div class="chat-msgs" id="msgs"></div>
+<div class="chat-bar">
+<input class="chat-inp" id="ci" placeholder="Digite uma mensagem..." onkeydown="if(event.key==='Enter')send()">
+<button class="send-btn" id="sb" onclick="send()">➤</button>
+</div>
+<div style="background:#f5f5f5;border-top:1px solid #e0e0e0;padding:7px 16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
+<span style="color:#aaa;font-size:11px">Preview do atendente</span>
+<button style="background:none;border:1px solid #ddd;border-radius:8px;padding:4px 10px;font-size:11px;color:#888;cursor:pointer" onclick="reset()">⚙️ Reconfigurar</button>
+</div>
+</div>
+
+<div id="paywall" style="display:none">
+<div class="page"><div class="wrap">
+<div class="pw-card">
+<div style="font-size:48px">🔒</div>
+<div style="font-size:22px;font-weight:800">Período grátis encerrado</div>
+<div style="color:#666;font-size:14px;line-height:1.6">Para continuar, renove seu acesso.</div>
+<div class="pw-contact" style="width:100%">
+<div class="pw-contact-title">💸 Pague via PIX e receba seu código</div>
+<div class="pw-contact-text">
+<strong style="color:#fff">Chave PIX:</strong><br>
+<span style="font-size:20px;font-weight:900;color:#25D366">(85) 98689-7912</span><br><br>
+Após pagar, envie o comprovante no WhatsApp. ✅
+</div>
+<a href="https://wa.me/5585986897912?text=Olá!%20Quero%20renovar." style="display:block;background:#25D366;color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;margin-top:12px">📲 Enviar comprovante</a>
+</div>
+<div class="lbl" style="align-self:flex-start">Código de acesso</div>
+<input class="code-inp" id="ki" placeholder="XXXXXXXX" maxlength="8" oninput="this.value=this.value.toUpperCase()">
+<div id="kmsg" style="font-size:13px;display:none"></div>
+<button class="btn-green" onclick="unlock()">Liberar 30 dias →</button>
+</div>
+<button style="background:none;border:none;color:#333;font-size:12px;cursor:pointer;margin-top:8px" onclick="reset()">Usar conta diferente</button>
+</div></div>
+</div>
+
+<div id="admin" style="display:none">
+<div style="display:flex;justify-content:center;padding:20px 16px;min-height:100vh;background:#050505">
+<div class="admin-card">
+<div style="font-size:32px;text-align:center">🔑</div>
+<div style="font-size:20px;font-weight:800;text-align:center">Painel do Dono</div>
+<div style="color:#555;font-size:13px;text-align:center">Gere o código após o pagamento</div>
+<div><div class="lbl" style="margin-bottom:6px">WHATSAPP DO CLIENTE</div>
+<input class="inp" id="ap" placeholder="Ex: 85986897912" type="tel"></div>
+<button class="btn-green" onclick="genCode()">Gerar código →</button>
+<div class="code-result" id="cres">
+<div style="color:#555;font-size:12px" id="cmon"></div>
+<div class="code-value" id="cval"></div>
+<button class="copy-btn" onclick="copyMsg()">📋 Copiar mensagem pro cliente</button>
+</div>
+<div class="how">
+<div class="how-t">⚙️ Como funciona</div>
+<div class="how-s">1. Cliente usa 7 dias grátis<br>2. Acesso bloqueia<br>3. Cliente paga e te chama<br>4. Você gera o código aqui<br>5. Ele digita → 30 dias liberados<br>6. Mês seguinte bloqueia de novo</div>
+</div>
+</div></div>
+</div>
+
 <script>
-const GEMINI_KEY="AIzaSyAESmbljFqKVhszkaSBXT4BfVIH4ozFa4U";
-const SECRET_KEY="minhachavesecreta123";
-const TRIAL_DAYS=7;
-const PAID_DAYS=30;
-const SEGMENTS=[{emoji:"🦷",label:"Clínica"},{emoji:"💇",label:"Salão"},{emoji:"🍕",label:"Restaurante"},{emoji:"🏠",label:"Imobiliária"},{emoji:"🛍️",label:"Loja"},{emoji:"💪",label:"Academia"},{emoji:"🐾",label:"Pet Shop"},{emoji:"🔧",label:"Serviços"}];
-const PROMPTS={"Clínica":"Você é atendente virtual de uma clínica. Agende consultas, informe horários. Seja simpático. Colete nome, serviço e data. Mensagens curtas estilo WhatsApp.","Salão":"Você é atendente de um salão. Agende horários, informe serviços. Colete nome, serviço e data.","Restaurante":"Você é atendente de restaurante. Receba pedidos, informe cardápio. Colete pedido, endereço e pagamento.","Imobiliária":"Você é assistente de imobiliária. Ajude a encontrar imóveis, agende visitas.","Loja":"Você é atendente de loja. Informe produtos e preços.","Academia":"Você é atendente de academia. Informe planos e aulas.","Pet Shop":"Você é atendente de pet shop. Agende banho e tosa.","Serviços":"Você é atendente. Agende visitas, passe orçamentos."};
-let sel="",hist=[],data=null;
+const GK="AIzaSyAESmbljFqKVhszkaSBXT4BfVIH4ozFa4U";
+const SK="minhachavesecreta123";
+const TD=7,PD=30;
+const SEGS=[{e:"🦷",l:"Clínica"},{e:"💇",l:"Salão"},{e:"🍕",l:"Restaurante"},{e:"🏠",l:"Imobiliária"},{e:"🛍️",l:"Loja"},{e:"💪",l:"Academia"},{e:"🐾",l:"Pet Shop"},{e:"🔧",l:"Serviços"}];
+const PR={"Clínica":"Você é atendente de uma clínica. Agende consultas, informe horários. Seja simpático. Mensagens curtas estilo WhatsApp.","Salão":"Você é atendente de um salão. Agende horários, informe serviços e preços.","Restaurante":"Você é atendente de restaurante. Receba pedidos, informe cardápio.","Imobiliária":"Você é assistente de imobiliária. Ajude a encontrar imóveis, agende visitas.","Loja":"Você é atendente de loja. Informe produtos e preços.","Academia":"Você é atendente de academia. Informe planos e aulas.","Pet Shop":"Você é atendente de pet shop. Agende serviços, informe preços.","Serviços":"Você é atendente. Agende visitas, passe orçamentos."};
+let sel="",hist=[],ud=null;
 
-function makeCode(p,s){const m=new Date().toISOString().slice(0,7);const r=p+"-"+m+"-"+s;let h=0;for(let i=0;i<r.length;i++){h=((h<<5)-h)+r.charCodeAt(i);h|=0;}return Math.abs(h).toString(36).toUpperCase().slice(0,8);}
+function makeCode(p){const m=new Date().toISOString().slice(0,7);const r=p+"-"+m+"-"+SK;let h=0;for(let i=0;i<r.length;i++){h=((h<<5)-h)+r.charCodeAt(i);h|=0;}return Math.abs(h).toString(36).toUpperCase().slice(0,8);}
 
-function show(screen){
-  const all=["landing","setup","chat","paywall","admin"];
-  all.forEach(s=>{const e=document.getElementById("s-"+s);if(e)e.style.display="none";});
-  const t=document.getElementById("s-"+screen);
-  if(t)t.style.display=screen==="chat"?"flex":"block";
-}
+function go(id){["landing","setup","chat","paywall","admin"].forEach(s=>{const e=document.getElementById(s);if(e)e.style.display="none";});const t=document.getElementById(id);if(t)t.style.display=id==="chat"?"flex":"block";}
 
-function init(){
-  if(location.search.includes("admin")){buildAdmin();show("admin");return;}
-  if(location.search.includes("reset")){localStorage.removeItem("d");buildLanding();show("landing");return;}
-  try{
-    const saved=localStorage.getItem("d");
-    if(!saved){buildLanding();buildSetup();show("landing");return;}
-    const d=JSON.parse(saved);data=d;
-    const now=new Date();
-    if(d.paidUntil){const pl=Math.ceil((new Date(d.paidUntil)-now)/86400000);if(pl>0){buildChat(d,pl,false);show("chat");return;}}
-    const tl=TRIAL_DAYS-Math.floor((now-new Date(d.startDate))/86400000);
-    if(tl>0){buildChat(d,tl,true);show("chat");}
-    else{buildPaywall();show("paywall");}
-  }catch(e){buildLanding();buildSetup();show("landing");}
-}
+// Montar segmentos
+const sg=document.getElementById("segs");
+SEGS.forEach(s=>{const b=document.createElement("button");b.className="seg-btn";b.innerHTML=`<span style="font-size:20px">${s.e}</span><span>${s.l}</span>`;b.onclick=()=>{document.querySelectorAll(".seg-btn").forEach(x=>x.classList.remove("on"));b.classList.add("on");sel=s.l;};sg.appendChild(b);});
 
-function buildLanding(){
-  const app=document.getElementById("app");
-  app.innerHTML+=`<div id="s-landing" style="display:none"><div class="page"><div class="wrap">
-  <div class="hero"><div class="hero-emoji">🤖</div><div class="hero-title">Seu atendente no WhatsApp</div><div class="hero-sub">Responde clientes 24h por dia, automático.</div><div class="hero-badge">✨ 7 dias grátis — sem cartão</div></div>
-  <div class="feat"><div class="feat-icon">⚡</div><div><div class="feat-t">Responde na hora</div><div class="feat-s">Nenhum cliente fica sem resposta</div></div></div>
-  <div class="feat"><div class="feat-icon">📅</div><div><div class="feat-t">Agenda sozinho</div><div class="feat-s">Marca horários automaticamente</div></div></div>
-  <div class="feat"><div class="feat-icon">🧠</div><div><div class="feat-t">Fala do seu negócio</div><div class="feat-s">Configurado com seus serviços e preços</div></div></div>
-  <button class="btn-green" onclick="show('setup')">Testar grátis 7 dias →</button>
-  <div class="btn-note">Configura em 2 minutos. Sem cartão.</div>
-  </div></div></div>`;
-}
-
-function buildSetup(){
-  const app=document.getElementById("app");
-  let segs="";
-  SEGMENTS.forEach(s=>segs+=`<button class="seg-btn" onclick="setSeg('${s.label}',this)"><span style="font-size:20px">${s.emoji}</span><span>${s.label}</span></button>`);
-  app.innerHTML+=`<div id="s-setup" style="display:none"><div class="page"><div class="wrap">
-  <button class="btn-back" onclick="show('landing')">← Voltar</button>
-  <div style="font-size:22px;font-weight:800;text-align:center">Configure seu atendente</div>
-  <div style="color:#555;font-size:13px;text-align:center">Preencha com os dados do seu negócio</div>
-  <div class="card">
-  <div class="lbl">📛 Nome do negócio *</div><div style="color:#555;font-size:11px;margin-bottom:4px">Como seu negócio se chama</div>
-  <input class="inp" id="i-name" placeholder="Ex: Salão da Ana, Clínica Saúde Total...">
-  <div class="lbl">📱 Seu WhatsApp * (com DDD, só números)</div><div style="color:#555;font-size:11px;margin-bottom:4px">Para gerar seu código de acesso</div>
-  <input class="inp" id="i-phone" placeholder="Ex: 85986897912" type="tel">
-  <div class="lbl">🏢 Tipo de negócio *</div><div style="color:#555;font-size:11px;margin-bottom:4px">Toque para selecionar</div>
-  <div class="grid4">${segs}</div>
-  <div class="lbl">🕐 Horário de funcionamento</div><div style="color:#555;font-size:11px;margin-bottom:4px">Quando você atende</div>
-  <input class="inp" id="i-hours" placeholder="Ex: Seg a Sex das 8h às 18h">
-  <div class="lbl">📍 Endereço</div><div style="color:#555;font-size:11px;margin-bottom:4px">Rua, número, bairro e cidade</div>
-  <input class="inp" id="i-addr" placeholder="Ex: Rua das Flores, 123 - Centro">
-  <div class="lbl">💰 Serviços e preços</div><div style="color:#555;font-size:11px;margin-bottom:4px">Liste o que você oferece</div>
-  <textarea class="inp" id="i-services" placeholder="Ex: Corte R$60, Escova R$50..."></textarea>
-  <div class="lbl">ℹ️ Outras informações</div><div style="color:#555;font-size:11px;margin-bottom:4px">Pagamento, regras, etc</div>
-  <textarea class="inp" id="i-extra" placeholder="Ex: Aceitamos PIX e cartão."></textarea>
-  </div>
-  <button class="btn-green" onclick="setup()">Ativar grátis por 7 dias 🚀</button>
-  <div class="btn-note">Sem cartão. Cancele quando quiser.</div>
-  </div></div></div>`;
-}
-
-function setSeg(label,btn){sel=label;document.querySelectorAll(".seg-btn").forEach(b=>b.classList.remove("on"));btn.classList.add("on");}
+// Iniciar
+try{
+  if(location.search.includes("admin")){go("admin");}
+  else if(location.search.includes("reset")){localStorage.removeItem("bd");go("landing");}
+  else{
+    const sv=localStorage.getItem("bd");
+    if(!sv){go("landing");}
+    else{
+      ud=JSON.parse(sv);
+      const now=new Date();
+      if(ud.paidUntil){const pl=Math.ceil((new Date(ud.paidUntil)-now)/86400000);if(pl>0){startChat(ud,pl,false);return;}}
+      const tl=TD-Math.floor((now-new Date(ud.startDate))/86400000);
+      if(tl>0)startChat(ud,tl,true);else go("paywall");
+    }
+  }
+}catch(e){go("landing");}
 
 function setup(){
-  const name=document.getElementById("i-name").value.trim();
-  const phone=document.getElementById("i-phone").value.replace(/\D/g,"");
-  const hours=document.getElementById("i-hours").value.trim();
-  const addr=document.getElementById("i-addr").value.trim();
-  const services=document.getElementById("i-services").value.trim();
-  const extra=document.getElementById("i-extra").value.trim();
-  if(!name||!sel||!phone)return alert("Preencha nome, WhatsApp e tipo de negócio!");
-  const fullExtra=[hours?"Horário: "+hours:"",addr?"Endereço: "+addr:"",services?"Serviços: "+services:"",extra].filter(Boolean).join(". ");
-  data={businessName:name,segment:sel,phone,extra:fullExtra,startDate:new Date().toISOString()};
-  localStorage.setItem("d",JSON.stringify(data));
-  buildChat(data,TRIAL_DAYS,true);
-  show("chat");
+  const name=document.getElementById("n").value.trim();
+  const phone=document.getElementById("p").value.replace(/\D/g,"");
+  if(!name||!sel||!phone){alert("Preencha nome, WhatsApp e tipo de negócio!");return;}
+  const h=document.getElementById("h").value.trim();
+  const a=document.getElementById("a").value.trim();
+  const sv=document.getElementById("sv").value.trim();
+  const ex=document.getElementById("ex").value.trim();
+  const info=[h?"Horário: "+h:"",a?"Endereço: "+a:"",sv?"Serviços: "+sv:"",ex].filter(Boolean).join(". ");
+  ud={businessName:name,segment:sel,phone,extra:info,startDate:new Date().toISOString()};
+  localStorage.setItem("bd",JSON.stringify(ud));
+  startChat(ud,TD,true);
 }
 
-function buildChat(d,daysLeft,isTrial){
-  document.getElementById("app").querySelectorAll("#s-chat").forEach(e=>e.remove());
-  const color=daysLeft<=3?"#EF4444":"#25D366";
-  const badgeText=isTrial?daysLeft+"d grátis":daysLeft+"d restantes";
-  const banner=daysLeft<=3?`<div class="chat-banner">⚠️ Acesso expira em <strong>${daysLeft} dia${daysLeft!==1?"s":""}</strong>. Entre em contato para renovar.</div>`:"";
-  document.getElementById("app").innerHTML+=`<div id="s-chat" style="display:none;flex-direction:column;height:100vh;max-width:480px;margin:0 auto;background:#ECE5DD">
-  <div class="chat-head">
-  <div class="chat-av">${d.businessName[0].toUpperCase()}</div>
-  <div style="flex:1"><div class="chat-name">${d.businessName}</div><div class="chat-status">🟢 Online</div></div>
-  <div style="border-radius:20px;padding:4px 10px;font-size:12px;font-weight:700;background:${color}22;color:${color};border:1px solid ${color}44">${badgeText}</div>
-  </div>
-  ${banner}
-  <div id="msgs" style="flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:4px"></div>
-  <div class="chat-input-bar">
-  <input class="chat-inp" id="cinp" placeholder="Digite uma mensagem..." onkeydown="if(event.key==='Enter')send()">
-  <button class="send-btn" id="sbtn" onclick="send()">➤</button>
-  </div>
-  <div class="admin-bar"><span>Preview do atendente</span><button onclick="resetApp()">⚙️ Reconfigurar</button></div>
-  </div>`;
-  addBot("Olá! 👋 Bem-vindo ao atendimento do *"+d.businessName+"*. Como posso te ajudar?");
+function startChat(d,days,trial){
+  document.getElementById("cav").textContent=d.businessName[0].toUpperCase();
+  document.getElementById("cnm").textContent=d.businessName;
+  const c=days<=3?"#EF4444":"#25D366";
+  const badge=document.getElementById("cbadge");
+  badge.textContent=trial?days+"d grátis":days+"d restantes";
+  badge.style.cssText=`border-radius:20px;padding:4px 10px;font-size:12px;font-weight:700;background:${c}22;color:${c};border:1px solid ${c}44`;
+  if(days<=3){const b=document.getElementById("cbanner");b.style.display="block";b.innerHTML=`⚠️ Acesso expira em <strong>${days} dia${days!==1?"s":""}</strong>.`;}
+  hist=[];document.getElementById("msgs").innerHTML="";
+  addBot("Olá! 👋 Bem-vindo ao *"+d.businessName+"*. Como posso te ajudar?");
+  go("chat");
 }
 
-function addBot(text){const d=document.getElementById("msgs");if(!d)return;const div=document.createElement("div");div.className="msg-row bot";div.innerHTML='<div class="bubble bot">'+text.replace(/\*(.*?)\*/g,"<strong>$1</strong>")+'</div>';d.appendChild(div);div.scrollIntoView({behavior:"smooth"});}
-function addUser(text){const d=document.getElementById("msgs");if(!d)return;const div=document.createElement("div");div.className="msg-row user";div.innerHTML='<div class="bubble user">'+text+'</div>';d.appendChild(div);div.scrollIntoView({behavior:"smooth"});}
-function showTyping(){const d=document.getElementById("msgs");if(!d)return;const div=document.createElement("div");div.className="msg-row bot";div.id="typ";div.innerHTML='<div class="bubble bot"><div class="typing-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>';d.appendChild(div);div.scrollIntoView({behavior:"smooth"});}
-function hideTyping(){const t=document.getElementById("typ");if(t)t.remove();}
+function addBot(t){const d=document.getElementById("msgs");const div=document.createElement("div");div.className="msg-row bot";div.innerHTML='<div class="bubble bot">'+t.replace(/\*(.*?)\*/g,"<strong>$1</strong>")+'</div>';d.appendChild(div);div.scrollIntoView({behavior:"smooth"});}
+function addUser(t){const d=document.getElementById("msgs");const div=document.createElement("div");div.className="msg-row user";div.innerHTML='<div class="bubble user">'+t+'</div>';d.appendChild(div);div.scrollIntoView({behavior:"smooth"});}
+function typing(on){let t=document.getElementById("typ");if(on){if(t)return;const d=document.getElementById("msgs");const div=document.createElement("div");div.id="typ";div.className="msg-row bot";div.innerHTML='<div class="bubble bot"><div style="display:flex;gap:4px;padding:4px"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>';d.appendChild(div);div.scrollIntoView({behavior:"smooth"});}else{if(t)t.remove();}}
 
 async function send(){
-  const inp=document.getElementById("cinp");
-  const text=inp.value.trim();
-  if(!text||!data)return;
-  inp.value="";
-  document.getElementById("sbtn").disabled=true;
-  addUser(text);showTyping();
-  const sys=(PROMPTS[data.segment]||PROMPTS["Serviços"])+"\n\nNome: "+data.businessName+".\n"+(data.extra?"Info: "+data.extra:"");
+  const inp=document.getElementById("ci");
+  const txt=inp.value.trim();
+  if(!txt||!ud)return;
+  inp.value="";document.getElementById("sb").disabled=true;
+  addUser(txt);typing(true);
+  const sys=(PR[ud.segment]||PR["Serviços"])+"\n\nNegócio: "+ud.businessName+".\n"+(ud.extra?"Info: "+ud.extra:"");
   const contents=hist.map(m=>({role:m.r==="a"?"model":"user",parts:[{text:m.t}]}));
-  contents.push({role:"user",parts:[{text:text}]});
+  contents.push({role:"user",parts:[{text:txt}]});
   try{
-    const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="+GEMINI_KEY,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents})});
+    const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="+GK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents})});
     const json=await res.json();
     const reply=json.candidates?.[0]?.content?.parts?.[0]?.text||"Desculpe, tente novamente.";
-    hist.push({r:"u",t:text});hist.push({r:"a",t:reply});
-    hideTyping();addBot(reply);
-  }catch{hideTyping();addBot("Erro de conexão.");}
-  document.getElementById("sbtn").disabled=false;
-}
-
-function buildPaywall(){
-  document.getElementById("app").innerHTML+=`<div id="s-paywall" style="display:none"><div class="page"><div class="wrap">
-  <div class="pw-card">
-  <div style="font-size:48px">🔒</div>
-  <div class="pw-title">Período grátis encerrado</div>
-  <div class="pw-sub">Para continuar, renove seu acesso.</div>
-  <div class="pw-contact" style="width:100%">
-  <div class="pw-contact-title">💸 Pague via PIX e receba seu código</div>
-  <div class="pw-contact-text"><strong style="color:#fff">Chave PIX:</strong><br><span style="font-size:20px;font-weight:900;color:#25D366">(85) 98689-7912</span><br><br>Após pagar, envie o comprovante no WhatsApp. ✅</div>
-  <a href="https://wa.me/5585986897912?text=Olá!%20Quero%20renovar." style="display:block;background:#25D366;color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;margin-top:12px">📲 Enviar comprovante</a>
-  </div>
-  <div class="lbl" style="align-self:flex-start">Código de acesso</div>
-  <input class="code-inp" id="cinput" placeholder="XXXXXXXX" maxlength="8" oninput="this.value=this.value.toUpperCase()">
-  <div class="code-msg hidden" id="cmsg"></div>
-  <button class="btn-green" onclick="unlock()">Liberar 30 dias →</button>
-  </div>
-  <button class="reset-btn" onclick="resetApp()">Usar conta diferente</button>
-  </div></div></div>`;
+    hist.push({r:"u",t:txt});hist.push({r:"a",t:reply});
+    typing(false);addBot(reply);
+  }catch{typing(false);addBot("Erro de conexão. Tente novamente.");}
+  document.getElementById("sb").disabled=false;
 }
 
 function unlock(){
-  const code=document.getElementById("cinput").value.toUpperCase();
-  const msg=document.getElementById("cmsg");
-  if(code===makeCode(data?.phone,SECRET_KEY)){
-    const paidUntil=new Date(Date.now()+PAID_DAYS*86400000).toISOString();
-    data={...data,paidUntil};
-    localStorage.setItem("d",JSON.stringify(data));
-    document.getElementById("cinput").classList.add("success");
-    msg.className="code-msg success";msg.textContent="✅ Liberando acesso...";msg.classList.remove("hidden");
-    setTimeout(()=>{buildChat(data,PAID_DAYS,false);show("chat");},2000);
+  const code=document.getElementById("ki").value.toUpperCase();
+  const msg=document.getElementById("kmsg");
+  if(code===makeCode(ud?.phone)){
+    const paidUntil=new Date(Date.now()+PD*86400000).toISOString();
+    ud={...ud,paidUntil};localStorage.setItem("bd",JSON.stringify(ud));
+    msg.style.cssText="font-size:13px;color:#25D366;display:block";
+    msg.textContent="✅ Código válido! Liberando...";
+    setTimeout(()=>startChat(ud,PD,false),2000);
   }else{
-    document.getElementById("cinput").classList.add("error");
-    msg.className="code-msg error";msg.textContent="❌ Código inválido.";msg.classList.remove("hidden");
-    setTimeout(()=>{document.getElementById("cinput").classList.remove("error");msg.classList.add("hidden");},2500);
+    msg.style.cssText="font-size:13px;color:#EF4444;display:block";
+    msg.textContent="❌ Código inválido.";
+    setTimeout(()=>msg.style.display="none",2500);
   }
 }
 
-function resetApp(){localStorage.removeItem("d");data=null;hist=[];sel="";location.href=location.pathname;}
+function reset(){localStorage.removeItem("bd");ud=null;hist=[];sel="";location.href=location.pathname;}
 
-function buildAdmin(){
-  document.getElementById("app").innerHTML+=`<div id="s-admin" style="display:none"><div style="display:flex;align-items:flex-start;justify-content:center;min-height:100vh;padding:20px 16px;background:#050505">
-  <div class="a
+function genCode(){
+  const phone=document.getElementById("ap").value.replace(/\D/g,"");
+  if(!phone)return;
+  const code=makeCode(phone);
+  const month=new Date().toLocaleString("pt-BR",{month:"long",year:"numeric"}).toUpperCase();
+  document.getElementById("cmon").textContent="CÓDIGO — "+month;
+  document.getElementById("cval").textContent=code;
+  document.getElementById("cres").style.display="block";
+}
+
+function copyMsg(){
+  const code=document.getElementById("cval").textContent;
+  navigator.clipboard.writeText("Olá! Seu acesso foi liberado 🎉\n\nCódigo: *"+code+"*\n\nDigite no app para liberar 30 dias. ✅");
+  const btn=document.querySelector(".copy-btn");
+  btn.textContent="✅ Copiado!";
+  setTimeout(()=>btn.textContent="📋 Copiar mensagem pro cliente",2000);
+}
+</script>
+</body>
+</html>
