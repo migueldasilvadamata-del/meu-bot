@@ -138,8 +138,13 @@ textarea.inp{resize:vertical;height:65px}
 <div class="pw-title">Período grátis encerrado</div>
 <div class="pw-sub">Seu atendente ficou ativo por 7 dias. Para continuar, renove seu acesso.</div>
 <div class="pw-contact" style="width:100%">
-<div class="pw-contact-title">📲 Como renovar</div>
-<div class="pw-contact-text">Entre em contato, efetue o pagamento e receba seu código de acesso.</div>
+<div class="pw-contact-title">💸 Pague via PIX e receba seu código</div>
+<div class="pw-contact-text">
+<strong style="color:#fff">Chave PIX (celular):</strong><br>
+<span style="font-size:20px;font-weight:900;color:#25D366">(85) 98689-7912</span><br><br>
+Após pagar, envie o comprovante no WhatsApp. Você recebe o código em minutos. ✅
+</div>
+<a href="https://wa.me/5585986897912?text=Olá!%20Quero%20renovar%20meu%20acesso.%20Segue%20o%20comprovante." style="display:block;background:#25D366;color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;margin-top:12px">📲 Enviar comprovante no WhatsApp</a>
 </div>
 <div class="lbl" style="align-self:flex-start">Seu código de acesso</div>
 <input class="code-inp" id="code-inp" placeholder="XXXXXXXX" maxlength="8" oninput="this.value=this.value.toUpperCase()">
@@ -181,15 +186,14 @@ const screens=["loading","landing","setup","chat","paywall","admin"];
 function showScreen(n){screens.forEach(s=>{const e=document.getElementById("screen-"+s);if(e){e.classList.add("hidden");e.style.display="";}});const t=document.getElementById("screen-"+n);if(t){t.classList.remove("hidden");if(n==="chat")t.style.display="flex";if(n==="admin")t.style.display="flex";}}
 window.onload=function(){
 if(window.location.search.includes("admin")){showScreen("admin");return;}
+if(window.location.search.includes("reset")){localStorage.removeItem("saas_data");showScreen("landing");return;}
 const grid=document.getElementById("seg-grid");
 SEGMENTS.forEach(seg=>{const btn=document.createElement("button");btn.className="seg-btn";btn.innerHTML='<span style="font-size:20px">'+seg.emoji+'</span><span>'+seg.label+'</span>';btn.onclick=()=>{document.querySelectorAll(".seg-btn").forEach(b=>b.classList.remove("on"));btn.classList.add("on");selectedSegment=seg.label;};grid.appendChild(btn);});
-const saved=localStorage.getItem("saas_data");
-if(!saved){showScreen("landing");return;}
+try{const saved=localStorage.getItem("saas_data");if(!saved){showScreen("landing");return;}
 const d=JSON.parse(saved);currentData=d;const now=new Date();
 if(d.paidUntil){const pl=Math.ceil((new Date(d.paidUntil)-now)/86400000);if(pl>0){startChat(d,pl,false);return;}}
 const tl=TRIAL_DAYS-Math.floor((now-new Date(d.startDate))/86400000);
-if(tl>0)startChat(d,tl,true);else showScreen("paywall");
-};
+if(tl>0)startChat(d,tl,true);else showScreen("paywall");}catch(e){showScreen("landing");}};
 function handleSetup(){const name=document.getElementById("inp-name").value.trim();const phone=document.getElementById("inp-phone").value.replace(/\D/g,"");const extra=document.getElementById("inp-extra").value.trim();if(!name||!selectedSegment||!phone)return;const d={businessName:name,segment:selectedSegment,phone,extra,startDate:new Date().toISOString()};localStorage.setItem("saas_data",JSON.stringify(d));currentData=d;startChat(d,TRIAL_DAYS,true);}
 function startChat(d,daysLeft,isTrial){document.getElementById("chat-avatar").textContent=d.businessName[0].toUpperCase();document.getElementById("chat-name").textContent=d.businessName;const badge=document.getElementById("chat-badge");const color=daysLeft<=3?"#EF4444":"#25D366";badge.textContent=isTrial?daysLeft+"d grátis":daysLeft+"d restantes";badge.style.background=color+"22";badge.style.color=color;badge.style.border="1px solid "+color+"44";const banner=document.getElementById("chat-banner");if(daysLeft<=3){banner.classList.remove("hidden");banner.innerHTML="⚠️ Acesso expira em <strong>"+daysLeft+" dia"+(daysLeft!==1?"s":"")+"</strong>. Entre em contato para renovar.";}chatHistory=[];document.getElementById("chat-msgs").innerHTML="";addBotMsg("Olá! 👋 Bem-vindo ao atendimento do *"+d.businessName+"*. Como posso te ajudar?");showScreen("chat");document.getElementById("screen-chat").style.display="flex";document.getElementById("screen-chat").style.flexDirection="column";}
 function addBotMsg(text){const div=document.createElement("div");div.className="msg-row bot";div.innerHTML='<div class="bubble bot">'+text.replace(/\*(.*?)\*/g,"<strong>$1</strong>")+'</div>';document.getElementById("chat-msgs").appendChild(div);div.scrollIntoView({behavior:"smooth"});}
@@ -197,11 +201,7 @@ function addUserMsg(text){const div=document.createElement("div");div.className=
 function showTyping(){const div=document.createElement("div");div.className="msg-row bot";div.id="typing-indicator";div.innerHTML='<div class="bubble bot"><div class="typing-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>';document.getElementById("chat-msgs").appendChild(div);div.scrollIntoView({behavior:"smooth"});}
 function hideTyping(){const t=document.getElementById("typing-indicator");if(t)t.remove();}
 function handleKey(e){if(e.key==="Enter")sendMessage();}
-async function sendMessage(){const inp=document.getElementById("chat-inp");const text=inp.value.trim();if(!text||!currentData)return;inp.value="";document.getElementById("send-btn").disabled=true;addUserMsg(text);showTyping();const systemPrompt=(PROMPTS[currentData.segment]||PROMPTS["Serviços"])+"\n\nNome do negócio: "+currentData.businessName+".\n"+(currentData.extra?"Informações: "+currentData.extra:"");chatHistory.push({role:"user",content:text});try{const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:500,system:systemPrompt,messages:chatHistory})});const data=await res.json();const reply=data.content?.map(c=>c.text||"").join("")||"Desculpe, tente novamente.";chatHistory.push({role:"assistant",content:reply});hideTyping();addBotMsg(reply);}catch{hideTyping();addBotMsg("Erro de conexão.");}document.getElementById("send-btn").disabled=false;inp.focus();}
+async function sendMessage(){const inp=document.getElementById("chat-inp");const text=inp.value.trim();if(!text||!currentData)return;inp.value="";document.getElementById("send-btn").disabled=true;addUserMsg(text);showTyping();const systemPrompt=(PROMPTS[currentData.segment]||PROMPTS["Serviços"])+"\n\nNome do negócio: "+currentData.businessName+".\n"+(currentData.extra?"Informações: "+currentData.extra:"");const contents=chatHistory.map(m=>({role:m.role==="assistant"?"model":"user",parts:[{text:m.content}]}));contents.push({role:"user",parts:[{text:text}]});try{const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAESmbljFqKVhszkaSBXT4BfVIH4ozFa4U",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({systemInstruction:{parts:[{text:systemPrompt}]},contents})});const data=await res.json();const reply=data.candidates?.[0]?.content?.parts?.[0]?.text||"Desculpe, tente novamente.";chatHistory.push({role:"user",content:text});chatHistory.push({role:"assistant",content:reply});hideTyping();addBotMsg(reply);}catch{hideTyping();addBotMsg("Erro de conexão.");}document.getElementById("send-btn").disabled=false;inp.focus();}
 function handleUnlock(){const code=document.getElementById("code-inp").value.toUpperCase();const msg=document.getElementById("code-msg");const valid=validateCode(code,currentData?.phone,SECRET_KEY);if(valid){const paidUntil=new Date(Date.now()+PAID_DAYS*86400000).toISOString();const updated={...currentData,paidUntil};localStorage.setItem("saas_data",JSON.stringify(updated));currentData=updated;document.getElementById("code-inp").classList.add("success");msg.className="code-msg success";msg.textContent="✅ Código válido! Liberando acesso...";msg.classList.remove("hidden");setTimeout(()=>startChat(updated,PAID_DAYS,false),2000);}else{document.getElementById("code-inp").classList.add("error");msg.className="code-msg error";msg.textContent="❌ Código inválido.";msg.classList.remove("hidden");setTimeout(()=>{document.getElementById("code-inp").classList.remove("error");msg.classList.add("hidden");},2500);}}
 function resetApp(){localStorage.removeItem("saas_data");currentData=null;chatHistory=[];selectedSegment="";document.querySelectorAll(".seg-btn").forEach(b=>b.classList.remove("on"));showScreen("landing");}
-function generateCode(){const phone=document.getElementById("admin-phone").value.replace(/\D/g,"");if(!phone)return;const code=makeCode(phone,SECRET_KEY);const month=new Date().toLocaleString("pt-BR",{month:"long",year:"numeric"}).toUpperCase();document.getElementById("code-month").textContent="CÓDIGO DO MÊS — "+month;document.getElementById("code-value").textContent=code;document.getElementById("code-result").classList.remove("hidden");}
-function copyCodeMsg(){const code=document.getElementById("code-value").textContent;const text="Olá! Seu acesso foi liberado 🎉\n\nCódigo de acesso: *"+code+"*\n\nDigite no app para liberar por 30 dias. ✅";navigator.clipboard.writeText(text).then(()=>{const btn=document.querySelector(".copy-msg-btn");btn.textContent="✅ Copiado!";setTimeout(()=>btn.textContent="📋 Copiar mensagem pro cliente",2000);});}
-</script>
-</body>
-</html>
+function generateCode(){const phone=document.getElementById("admin-phone").value.replace(/\D/g,"");if(!phone)return;const code=makeCode(phone,SECRET_
