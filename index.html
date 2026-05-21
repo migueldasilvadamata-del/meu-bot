@@ -36,7 +36,7 @@ textarea.inp{resize:vertical;height:60px}
 @keyframes bn{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
 .cbar{background:#F0F0F0;padding:8px 12px;display:flex;gap:8px;border-top:1px solid #ddd;flex-shrink:0}
 .cinp{flex:1;background:#fff;border:none;border-radius:24px;padding:10px 16px;font-size:14px;outline:none}
-.sbtn{background:#25D366;border:none;border-radius:50%;width:42px;height:42px;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0}
+.sbtn{background:#25D366;border:none;border-radius:50%;width:42px;height:42px;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .pwcard{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
 .pxbox{background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:12px;padding:14px;text-align:left;width:100%}
 .cinput{background:#141414;border:2px solid #222;border-radius:10px;color:#fff;padding:14px;font-size:22px;font-weight:800;letter-spacing:6px;outline:none;width:100%;text-align:center;font-family:monospace;box-sizing:border-box}
@@ -177,7 +177,16 @@ const PR={"Clínica":"Você é atendente de uma clínica. Agende consultas, info
 
 let sel="",hist=[],ud=null;
 
-function makeCode(p){const m=new Date().toISOString().slice(0,7);const r=p+"-"+m+"-"+SK;let h=0;for(let i=0;i<r.length;i++){h=((h<<5)-h)+r.charCodeAt(i);h|=0;}return Math.abs(h).toString(36).toUpperCase().slice(0,8);}
+function makeCode(p){
+  const m=new Date().toISOString().slice(0,7);
+  const r=p+"-"+m+"-"+SK;
+  let h=0;
+  for(let i=0;i<r.length;i++){
+    h=((h<<5)-h)+r.charCodeAt(i);
+    h|=0;
+  }
+  return Math.abs(h).toString(36).toUpperCase().slice(0,8);
+}
 
 function showOnly(id){
   ["landing-screen","setup-screen","chat-screen","paywall-screen","admin-screen"].forEach(s=>{
@@ -190,60 +199,112 @@ function showOnly(id){
 
 // Segmentos
 const grid=document.getElementById("seg-grid");
-SEGS.forEach(s=>{
-  const b=document.createElement("button");
-  b.className="seg";
-  b.innerHTML='<span style="font-size:20px">'+s.e+'</span><span>'+s.l+'</span>';
-  b.addEventListener("click",function(){
-    document.querySelectorAll(".seg").forEach(x=>x.classList.remove("on"));
-    b.classList.add("on");
-    sel=s.l;
+if(grid){
+  SEGS.forEach(s=>{
+    const b=document.createElement("button");
+    b.className="seg";
+    b.innerHTML='<span style="font-size:20px">'+s.e+'</span><span>'+s.l+'</span>';
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".seg").forEach(x=>x.classList.remove("on"));
+      b.classList.add("on");
+      sel=s.l;
+    });
+    grid.appendChild(b);
   });
-  grid.appendChild(b);
-});
+}
 
 // Botões
-document.getElementById("btn-start").addEventListener("click",function(){showOnly("setup-screen");});
-document.getElementById("btn-back").addEventListener("click",function(){showOnly("landing-screen");});
-document.getElementById("btn-ativar").addEventListener("click",function(){doSetup();});
-document.getElementById("btn-reset").addEventListener("click",function(){doReset();});
-document.getElementById("btn-reset2").addEventListener("click",function(){doReset();});
-document.getElementById("btn-unlock").addEventListener("click",function(){doUnlock();});
-document.getElementById("c-send").addEventListener("click",function(){doSend();});
-document.getElementById("c-inp").addEventListener("keydown",function(e){if(e.key==="Enter")doSend();});
-document.getElementById("k-inp").addEventListener("input",function(){this.value=this.value.toUpperCase();});
-document.getElementById("btn-gencode").addEventListener("click",function(){doGenCode();});
-document.getElementById("btn-copy").addEventListener("click",function(){doCopy();});
+const btnStart=document.getElementById("btn-start");
+if(btnStart)btnStart.addEventListener("click",function(){showOnly("setup-screen");});
+
+const btnBack=document.getElementById("btn-back");
+if(btnBack)btnBack.addEventListener("click",function(){showOnly("landing-screen");});
+
+const btnAtivar=document.getElementById("btn-ativar");
+if(btnAtivar)btnAtivar.addEventListener("click",function(){doSetup();});
+
+const btnReset=document.getElementById("btn-reset");
+if(btnReset)btnReset.addEventListener("click",function(){doReset();});
+
+const btnReset2=document.getElementById("btn-reset2");
+if(btnReset2)btnReset2.addEventListener("click",function(){doReset();});
+
+const btnUnlock=document.getElementById("btn-unlock");
+if(btnUnlock)btnUnlock.addEventListener("click",function(){doUnlock();});
+
+const cSend=document.getElementById("c-send");
+if(cSend)cSend.addEventListener("click",function(){doSend();});
+
+const cInp=document.getElementById("c-inp");
+if(cInp)cInp.addEventListener("keydown",function(e){if(e.key==="Enter")doSend();});
+
+const kInp=document.getElementById("k-inp");
+if(kInp)kInp.addEventListener("input",function(){this.value=this.value.toUpperCase();});
+
+const btnGenCode=document.getElementById("btn-gencode");
+if(btnGenCode)btnGenCode.addEventListener("click",function(){doGenCode();});
+
+const btnCopy=document.getElementById("btn-copy");
+if(btnCopy)btnCopy.addEventListener("click",function(){doCopy();});
 
 // Init
 (function(){
   try{
     if(location.search.includes("admin")){showOnly("admin-screen");return;}
     if(location.search.includes("reset")){localStorage.removeItem("bd");showOnly("landing-screen");return;}
+    
     const sv=localStorage.getItem("bd");
     if(!sv){showOnly("landing-screen");return;}
+    
     ud=JSON.parse(sv);
     const now=new Date();
+    const startDate=new Date(ud.startDate);
+    
+    // Calcula dias passados corretamente
+    const daysPassed=Math.floor((now-startDate)/(1000*60*60*24));
+    const daysRemaining=TD-daysPassed;
+    
     if(ud.paidUntil){
-      const pl=Math.ceil((new Date(ud.paidUntil)-now)/86400000);
-      if(pl>0){doStartChat(ud,pl,false);return;}
+      const paidDate=new Date(ud.paidUntil);
+      if(now<paidDate){
+        const daysLeft=Math.ceil((paidDate-now)/(1000*60*60*24));
+        doStartChat(ud,daysLeft,false);
+        return;
+      }
     }
-    const tl=TD-Math.floor((now-new Date(ud.startDate))/86400000);
-    if(tl>0)doStartChat(ud,tl,true);
-    else showOnly("paywall-screen");
-  }catch(e){showOnly("landing-screen");}
+    
+    if(daysRemaining>0){
+      doStartChat(ud,daysRemaining,true);
+    }else{
+      showOnly("paywall-screen");
+    }
+  }catch(e){
+    console.error("Erro na inicialização:",e);
+    showOnly("landing-screen");
+  }
 })();
 
 function doSetup(){
   const name=document.getElementById("f-name").value.trim();
   const phone=document.getElementById("f-phone").value.replace(/\D/g,"");
-  if(!name||!sel||!phone){alert("Preencha nome, WhatsApp e tipo de negócio!");return;}
+  if(!name||!sel||!phone){
+    alert("Preencha nome, WhatsApp e tipo de negócio!");
+    return;
+  }
   const h=document.getElementById("f-hours").value.trim();
   const a=document.getElementById("f-addr").value.trim();
   const sv=document.getElementById("f-serv").value.trim();
   const ex=document.getElementById("f-extra").value.trim();
   const info=[h?"Horário: "+h:"",a?"Endereço: "+a:"",sv?"Serviços: "+sv:"",ex].filter(Boolean).join(". ");
-  ud={businessName:name,segment:sel,phone,extra:info,startDate:new Date().toISOString()};
+  
+  ud={
+    businessName:name,
+    segment:sel,
+    phone,
+    extra:info,
+    startDate:new Date().toISOString()
+  };
+  
   localStorage.setItem("bd",JSON.stringify(ud));
   doStartChat(ud,TD,true);
 }
@@ -251,15 +312,18 @@ function doSetup(){
 function doStartChat(d,days,trial){
   document.getElementById("c-av").textContent=d.businessName[0].toUpperCase();
   document.getElementById("c-name").textContent=d.businessName;
+  
   const c=days<=3?"#EF4444":"#25D366";
   const badge=document.getElementById("c-badge");
   badge.textContent=trial?days+"d grátis":days+"d restantes";
   badge.style.cssText="border-radius:20px;padding:4px 10px;font-size:12px;font-weight:700;background:"+c+"22;color:"+c+";border:1px solid "+c+"44";
+  
   if(days<=3){
     const b=document.getElementById("c-banner");
     b.style.display="block";
     b.innerHTML="⚠️ Acesso expira em <strong>"+days+" dia"+(days!==1?"s":"")+"</strong>.";
   }
+  
   hist=[];
   document.getElementById("c-msgs").innerHTML="";
   addBot("Olá! 👋 Bem-vindo ao *"+d.businessName+"*. Como posso te ajudar?");
@@ -272,7 +336,7 @@ function addBot(t){
   div.className="row";
   div.innerHTML='<div class="bub b">'+t.replace(/\*(.*?)\*/g,"<strong>$1</strong>")+'</div>';
   d.appendChild(div);
-  div.scrollIntoView({behavior:"smooth"});
+  setTimeout(()=>div.scrollIntoView({behavior:"smooth"}),100);
 }
 
 function addUser(t){
@@ -281,63 +345,60 @@ function addUser(t){
   div.className="row u";
   div.innerHTML='<div class="bub u">'+t+'</div>';
   d.appendChild(div);
-  div.scrollIntoView({behavior:"smooth"});
+  setTimeout(()=>div.scrollIntoView({behavior:"smooth"}),100);
 }
 
 function showTyping(){
   const d=document.getElementById("c-msgs");
   const div=document.createElement("div");
-  div.id="typ";div.className="row";
+  div.id="typ";
+  div.className="row";
   div.innerHTML='<div class="bub b"><div style="display:flex;gap:4px;padding:4px"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>';
-  d.appendChild(div);div.scrollIntoView({behavior:"smooth"});
+  d.appendChild(div);
+  setTimeout(()=>div.scrollIntoView({behavior:"smooth"}),100);
 }
 
-function hideTyping(){const t=document.getElementById("typ");if(t)t.remove();}
+function hideTyping(){
+  const t=document.getElementById("typ");
+  if(t)t.remove();
+}
 
 async function doSend(){
   const inp=document.getElementById("c-inp");
   const txt=inp.value.trim();
   if(!txt||!ud)return;
+  
   inp.value="";
-  document.getElementById("c-send").disabled=true;
-  addUser(txt);showTyping();
+  const sbtn=document.getElementById("c-send");
+  sbtn.disabled=true;
+  
+  addUser(txt);
+  showTyping();
+  
   const sys=(PR[ud.segment]||PR["Serviços"])+"\n\nNegócio: "+ud.businessName+".\n"+(ud.extra?"Info: "+ud.extra:"");
   const contents=hist.map(m=>({role:m.r==="a"?"model":"user",parts:[{text:m.t}]}));
   contents.push({role:"user",parts:[{text:txt}]});
+  
   try{
-    const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="+GK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents})});
+    const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="+GK,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents})
+    });
     const json=await res.json();
     const reply=json.candidates?.[0]?.content?.parts?.[0]?.text||"Desculpe, tente novamente.";
-    hist.push({r:"u",t:txt});hist.push({r:"a",t:reply});
-    hideTyping();addBot(reply);
-  }catch(e){hideTyping();addBot("Erro de conexão.");}
-  document.getElementById("c-send").disabled=false;
+    hist.push({r:"u",t:txt});
+    hist.push({r:"a",t:reply});
+    hideTyping();
+    addBot(reply);
+  }catch(e){
+    console.error("Erro ao enviar mensagem:",e);
+    hideTyping();
+    addBot("Erro de conexão. Tente novamente.");
+  }
+  
+  sbtn.disabled=false;
 }
 
 function doUnlock(){
-  const code=document.getElementById("k-inp").value.toUpperCase();
-  const msg=document.getElementById("k-msg");
-  if(code===makeCode(ud?.phone)){
-    const paidUntil=new Date(Date.now()+PD*86400000).toISOString();
-    ud={...ud,paidUntil};
-    localStorage.setItem("bd",JSON.stringify(ud));
-    msg.style.cssText="font-size:13px;color:#25D366;display:block";
-    msg.textContent="✅ Código válido! Liberando...";
-    setTimeout(()=>doStartChat(ud,PD,false),2000);
-  }else{
-    msg.style.cssText="font-size:13px;color:#EF4444;display:block";
-    msg.textContent="❌ Código inválido.";
-    setTimeout(()=>msg.style.display="none",2500);
-  }
-}
-
-function doReset(){localStorage.removeItem("bd");ud=null;hist=[];sel="";location.href=location.pathname;}
-
-function doGenCode(){
-  const phone=document.getElementById("a-phone").value.replace(/\D/g,"");
-  if(!phone)return;
-  const code=makeCode(phone);
-  const month=new Date().toLocaleString("pt-BR",{month:"long",year:"numeric"}).toUpperCase();
-  document.getElementById("code-month").textContent="CÓDIGO — "+month;
-  document.getElementById("code-val").textContent=code;
-  document.getElementById("code-re
+  const code=document.getElementById("k-inp").value.t
