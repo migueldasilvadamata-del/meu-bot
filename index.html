@@ -10,6 +10,7 @@ body{background:#050505;color:#fff;min-height:100vh}
 .page{display:flex;justify-content:center;padding:20px 16px;min-height:100vh}
 .wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:14px}
 .btn{background:#25D366;border:none;border-radius:14px;color:#fff;padding:16px;font-size:16px;font-weight:800;cursor:pointer;width:100%}
+.btn2{background:#141414;border:1px solid #333;border-radius:14px;color:#aaa;padding:14px;font-size:15px;font-weight:600;cursor:pointer;width:100%}
 .card{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
 .lbl{color:#777;font-size:12px;font-weight:600}
 .inp{background:#141414;border:1px solid #222;border-radius:10px;color:#fff;padding:12px 14px;font-size:15px;outline:none;width:100%;font-family:inherit;box-sizing:border-box}
@@ -36,11 +37,13 @@ textarea.inp{resize:vertical;height:65px}
 .ci{flex:1;background:#fff;border:none;border-radius:24px;padding:10px 16px;font-size:14px;outline:none}
 .sb{background:#25D366;border:none;border-radius:50%;width:42px;height:42px;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0}
 .pwc{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
-.pxb{background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:12px;padding:14px;text-align:left;width:100%}
+.pxb{background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.2);border-radius:12px;padding:16px;text-align:left;width:100%}
 .ki{background:#141414;border:2px solid #222;border-radius:10px;color:#fff;padding:14px;font-size:22px;font-weight:800;letter-spacing:6px;outline:none;width:100%;text-align:center;font-family:monospace;box-sizing:border-box}
 .ac{background:#0e0e0e;border:1px solid #1a1a1a;border-radius:20px;padding:28px;width:100%;max-width:380px;display:flex;flex-direction:column;gap:14px}
 .cr{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:14px;padding:20px;text-align:center;display:none}
 .cv{color:#25D366;font-size:32px;font-weight:900;letter-spacing:4px;margin:6px 0 12px;font-family:monospace}
+.planBtn{background:#141414;border:2px solid #222;border-radius:12px;color:#888;padding:14px;font-size:14px;cursor:pointer;text-align:left;width:100%;margin-top:6px}
+.planBtn.on{background:rgba(37,211,102,0.12);border-color:#25D366;color:#25D366}
 </style>
 </head>
 <body>
@@ -113,20 +116,33 @@ textarea.inp{resize:vertical;height:65px}
 <div class="pwc">
 <div style="font-size:48px">🔒</div>
 <div style="font-size:22px;font-weight:800">Período grátis encerrado</div>
-<div style="color:#666;font-size:14px;line-height:1.6">Para continuar, renove seu acesso.</div>
+<div style="color:#666;font-size:14px;line-height:1.6;max-width:300px">Seu teste de 7 dias acabou. Para continuar, faça o pagamento abaixo.</div>
+
 <div class="pxb">
-<div style="color:#25D366;font-size:13px;font-weight:700;margin-bottom:8px">💸 Pague via PIX e receba seu código</div>
-<div style="color:#888;font-size:13px;line-height:1.7">
-<strong style="color:#fff">Chave PIX (celular):</strong><br>
-<span style="font-size:20px;font-weight:900;color:#25D366">(85) 98689-7912</span><br><br>
-Após pagar, envie o comprovante no WhatsApp. Você recebe o código em minutos. ✅
+<div style="color:#25D366;font-size:13px;font-weight:700;margin-bottom:10px">💸 Como renovar seu acesso</div>
+<div style="color:#888;font-size:13px;line-height:1.8">
+  <strong style="color:#fff">Passo 1:</strong> Faça o PIX para o número abaixo<br>
+  <strong style="color:#25D366;font-size:18px">(85) 98689-7912</strong><br><br>
+  <strong style="color:#fff">Passo 2:</strong> Envie o comprovante no WhatsApp<br>
+  <strong style="color:#fff">Passo 3:</strong> Receba seu código e digite aqui
 </div>
-<a href="https://wa.me/5585986897912?text=Olá!%20Quero%20renovar%20meu%20acesso.%20Segue%20o%20comprovante." style="display:block;background:#25D366;color:#fff;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;margin-top:12px">📲 Enviar comprovante no WhatsApp</a>
 </div>
-<div class="lbl" style="align-self:flex-start">Código de acesso</div>
-<input class="ki" id="ki" placeholder="XXXXXXXX" maxlength="8" oninput="this.value=this.value.toUpperCase()">
-<div id="km" style="font-size:13px;display:none"></div>
-<button class="btn" onclick="doUnlock()">Liberar 30 dias →</button>
+
+<a href="https://wa.me/5585986897912?text=Olá!%20Quero%20renovar%20meu%20acesso.%20Segue%20o%20comprovante." style="display:block;background:#25D366;color:#fff;text-align:center;padding:14px;border-radius:14px;font-weight:800;font-size:15px;text-decoration:none;width:100%;box-sizing:border-box">
+  📲 Enviar comprovante no WhatsApp
+</a>
+
+<button class="btn2" onclick="document.getElementById('code-area').style.display='block';this.style.display='none'">
+  ✅ Já paguei — tenho o código
+</button>
+
+<div id="code-area" style="display:none;width:100%;display:flex;flex-direction:column;gap:12px">
+  <div class="lbl" style="align-self:flex-start">Digite seu código de acesso</div>
+  <input class="ki" id="ki" placeholder="XXXXXXXX" maxlength="8" oninput="this.value=this.value.toUpperCase()">
+  <div id="km" style="font-size:13px;display:none"></div>
+  <button class="btn" onclick="doUnlock()">Liberar acesso →</button>
+</div>
+
 </div>
 <button style="background:none;border:none;color:#333;font-size:12px;cursor:pointer;margin-top:8px" onclick="doReset()">Usar conta diferente</button>
 </div>
@@ -139,17 +155,26 @@ Após pagar, envie o comprovante no WhatsApp. Você recebe o código em minutos.
 <div style="font-size:32px;text-align:center">🔑</div>
 <div style="font-size:20px;font-weight:800;text-align:center">Painel do Dono</div>
 <div style="color:#555;font-size:13px;text-align:center">Gere o código após o pagamento</div>
-<div><div class="lbl" style="margin-bottom:6px">WHATSAPP DO CLIENTE</div>
-<input class="inp" id="ap" placeholder="Ex: 85986897912" type="tel"></div>
+<div>
+<div class="lbl" style="margin-bottom:6px">WHATSAPP DO CLIENTE</div>
+<input class="inp" id="ap" placeholder="Ex: 85986897912" type="tel">
+</div>
+<div>
+<div class="lbl" style="margin-bottom:8px">PLANO CONTRATADO</div>
+<button class="planBtn on" id="p30" onclick="selectPlan(30,this)">📅 Mensal — 30 dias</button>
+<button class="planBtn" id="p180" onclick="selectPlan(180,this)">📆 Semestral — 6 meses</button>
+<button class="planBtn" id="p365" onclick="selectPlan(365,this)">🗓️ Anual — 12 meses</button>
+</div>
 <button class="btn" onclick="doGen()">Gerar código →</button>
 <div class="cr" id="cr">
 <div style="color:#555;font-size:12px" id="cm2"></div>
 <div class="cv" id="cv"></div>
+<div style="color:#888;font-size:12px;margin-bottom:12px" id="cdays"></div>
 <button style="background:#1a1a1a;border:1px solid #252525;border-radius:8px;color:#888;padding:8px 16px;font-size:13px;cursor:pointer" onclick="doCopy()">📋 Copiar mensagem pro cliente</button>
 </div>
 <div style="background:#141414;border-radius:12px;padding:14px">
 <div style="color:#F59E0B;font-size:12px;font-weight:700;margin-bottom:8px">⚙️ Como funciona</div>
-<div style="color:#666;font-size:12px;line-height:1.8">1. Cliente usa 7 dias grátis<br>2. Acesso bloqueia<br>3. Cliente paga e te chama<br>4. Você gera o código aqui<br>5. Ele digita → 30 dias liberados<br>6. Mês seguinte bloqueia de novo</div>
+<div style="color:#666;font-size:12px;line-height:1.8">1. Cliente usa 7 dias grátis<br>2. Acesso bloqueia<br>3. Cliente envia comprovante no WhatsApp<br>4. Você escolhe o plano e gera o código<br>5. Manda o código pro cliente<br>6. Ele digita → acesso liberado!</div>
 </div>
 </div>
 </div>
@@ -158,29 +183,28 @@ Após pagar, envie o comprovante no WhatsApp. Você recebe o código em minutos.
 <script>
 const GK="AIzaSyAESmbljFqKVhszkaSBXT4BfVIH4ozFa4U";
 const SK="minhachavesecreta123";
-const TD=7,PD=30;
+const TD=7;
 const SEGS=[{e:"🦷",l:"Clínica"},{e:"💇",l:"Salão"},{e:"🍕",l:"Restaurante"},{e:"🏠",l:"Imobiliária"},{e:"🛍️",l:"Loja"},{e:"💪",l:"Academia"},{e:"🐾",l:"Pet Shop"},{e:"🔧",l:"Serviços"}];
 const PR={"Clínica":"Você é atendente de uma clínica. Agende consultas e informe horários. Mensagens curtas estilo WhatsApp.","Salão":"Você é atendente de salão. Agende horários e informe serviços.","Restaurante":"Você é atendente de restaurante. Receba pedidos e informe cardápio.","Imobiliária":"Você é assistente de imobiliária. Ajude clientes a encontrar imóveis.","Loja":"Você é atendente de loja. Informe produtos e preços.","Academia":"Você é atendente de academia. Informe planos e aulas.","Pet Shop":"Você é atendente de pet shop. Agende serviços e informe preços.","Serviços":"Você é atendente. Agende visitas e passe orçamentos."};
-let sel="",hist=[],ud=null;
+let sel="",hist=[],ud=null,planDays=30;
 
-function makeCode(p){const m=new Date().toISOString().slice(0,7);const r=p+"-"+m+"-"+SK;let h=0;for(let i=0;i<r.length;i++){h=((h<<5)-h)+r.charCodeAt(i);h|=0;}return Math.abs(h).toString(36).toUpperCase().slice(0,8);}
+function makeCode(p,days){const m=new Date().toISOString().slice(0,7);const r=p+"-"+m+"-"+days+"-"+SK;let h=0;for(let i=0;i<r.length;i++){h=((h<<5)-h)+r.charCodeAt(i);h|=0;}return Math.abs(h).toString(36).toUpperCase().slice(0,8);}
+
+function selectPlan(days,btn){planDays=days;document.querySelectorAll(".planBtn").forEach(b=>b.classList.remove("on"));btn.classList.add("on");}
 
 function show(n){["S1","S2","S3","S4","S5"].forEach(s=>document.getElementById(s).style.display="none");const e=document.getElementById(n);e.style.display=n==="S3"?"flex":"block";if(n==="S3")e.style.flexDirection="column";}
 
-// Segmentos
 const sg=document.getElementById("sg");
 SEGS.forEach(s=>{const b=document.createElement("button");b.className="seg";b.innerHTML='<span style="font-size:20px">'+s.e+'</span><span>'+s.l+'</span>';b.onclick=function(){document.querySelectorAll(".seg").forEach(x=>x.classList.remove("on"));b.classList.add("on");sel=s.l;};sg.appendChild(b);});
 
-// Init
 try{
   if(location.search.includes("admin")){show("S5");}
   else if(location.search.includes("reset")){localStorage.removeItem("bd");show("S1");}
   else{
     const sv=localStorage.getItem("bd");
     if(sv){
-      ud=JSON.parse(sv);
-      const now=new Date();
-      if(ud.paidUntil){const pl=Math.ceil((new Date(ud.paidUntil)-now)/86400000);if(pl>0){startChat(ud,pl,false);}}
+      ud=JSON.parse(sv);const now=new Date();
+      if(ud.paidUntil){const pl=Math.ceil((new Date(ud.paidUntil)-now)/86400000);if(pl>0){startChat(ud,pl,false);}else show("S4");}
       else{const tl=TD-Math.floor((now-new Date(ud.startDate))/86400000);if(tl>0)startChat(ud,tl,true);else show("S4");}
     }
   }
@@ -233,12 +257,16 @@ async function doSend(){
 function doUnlock(){
   const code=document.getElementById("ki").value.toUpperCase();
   const msg=document.getElementById("km");
-  if(code===makeCode(ud?.phone)){
-    const paidUntil=new Date(Date.now()+PD*86400000).toISOString();
+  const v30=code===makeCode(ud?.phone,30);
+  const v180=code===makeCode(ud?.phone,180);
+  const v365=code===makeCode(ud?.phone,365);
+  const days=v30?30:v180?180:v365?365:0;
+  if(days>0){
+    const paidUntil=new Date(Date.now()+days*86400000).toISOString();
     ud={...ud,paidUntil};localStorage.setItem("bd",JSON.stringify(ud));
     msg.style.cssText="font-size:13px;color:#25D366;display:block";
-    msg.textContent="✅ Código válido! Liberando...";
-    setTimeout(()=>startChat(ud,PD,false),2000);
+    msg.textContent="✅ Código válido! Liberando "+days+" dias...";
+    setTimeout(()=>startChat(ud,days,false),2000);
   }else{
     msg.style.cssText="font-size:13px;color:#EF4444;display:block";
     msg.textContent="❌ Código inválido.";
@@ -251,15 +279,18 @@ function doReset(){localStorage.removeItem("bd");ud=null;hist=[];sel="";location
 function doGen(){
   const phone=document.getElementById("ap").value.replace(/\D/g,"");
   if(!phone)return;
-  const code=makeCode(phone);
-  document.getElementById("cm2").textContent="CÓDIGO — "+new Date().toLocaleString("pt-BR",{month:"long",year:"numeric"}).toUpperCase();
+  const code=makeCode(phone,planDays);
+  const planName=planDays===30?"Mensal (30 dias)":planDays===180?"Semestral (6 meses)":"Anual (12 meses)";
+  document.getElementById("cm2").textContent="PLANO "+planName.toUpperCase();
   document.getElementById("cv").textContent=code;
+  document.getElementById("cdays").textContent="Este código libera "+planDays+" dias de acesso";
   document.getElementById("cr").style.display="block";
 }
 
 function doCopy(){
   const code=document.getElementById("cv").textContent;
-  navigator.clipboard.writeText("Olá! Seu acesso foi liberado 🎉\n\nCódigo: *"+code+"*\n\nDigite no app para liberar 30 dias. ✅");
+  const planName=planDays===30?"30 dias":planDays===180?"6 meses":"1 ano";
+  navigator.clipboard.writeText("Olá! Seu acesso foi liberado 🎉\n\nCódigo: *"+code+"*\n\nDigite no app para liberar "+planName+" de acesso. ✅");
   event.target.textContent="✅ Copiado!";
   setTimeout(()=>event.target.textContent="📋 Copiar mensagem pro cliente",2000);
 }
