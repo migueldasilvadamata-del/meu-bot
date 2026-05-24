@@ -9,14 +9,15 @@
 body{background:#030d06;color:#fff;min-height:100vh}
 .page{display:flex;justify-content:center;padding:20px 16px;min-height:100vh}
 .wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:14px}
-.btn{background:#0a5c2e;border:none;border-radius:14px;color:#fff;padding:16px;font-size:16px;font-weight:800;cursor:pointer;width:100%;transition:background 0.2s}
-.btn:hover{background:#0d7a3e}
+.btn{background:#0a5c2e;border:none;border-radius:14px;color:#fff;padding:16px;font-size:16px;font-weight:800;cursor:pointer;width:100%}
 .btn2{background:transparent;border:1px solid #1a3d28;border-radius:14px;color:#888;padding:14px;font-size:15px;font-weight:600;cursor:pointer;width:100%}
-.card{background:#071a0e;border:1px solid #0f2d18;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card{background:#071a0e;border:1px solid #0f2d18;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:4px}
 .lbl{color:#4a9e6a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px}
+.hint{color:#2d5c3a;font-size:12px}
 .inp{background:#0a1f10;border:1px solid #0f2d18;border-radius:10px;color:#fff;padding:12px 14px;font-size:15px;outline:none;width:100%;font-family:inherit;box-sizing:border-box}
 .inp:focus{border-color:#0a5c2e}
-textarea.inp{resize:vertical;height:65px}
+textarea.inp{resize:vertical;height:70px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .seg{background:#0a1f10;border:1px solid #0f2d18;border-radius:10px;padding:10px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:#666;font-size:10px}
 .seg.on{background:rgba(10,92,46,0.3);border-color:#0a5c2e;color:#4a9e6a}
@@ -54,19 +55,19 @@ textarea.inp{resize:vertical;height:65px}
 <div id="S1" class="page">
 <div class="wrap">
 <div style="text-align:center;padding:8px 0">
-<div style="font-size:13px;font-weight:700;color:#4a9e6a;letter-spacing:2px;text-transform:uppercase">AtendIA</div>
+<div style="font-size:15px;font-weight:800;color:#4a9e6a;letter-spacing:3px;text-transform:uppercase">AtendIA</div>
 </div>
 <div class="hero">
 <div style="background:#0a5c2e;border-radius:16px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:32px">🤖</div>
-<div style="font-size:28px;font-weight:900;line-height:1.2">Atendimento inteligente para o seu negócio</div>
-<div style="color:#4a7a5a;font-size:15px;line-height:1.6">Seu cliente envia mensagem — a IA responde na hora, 24h por dia, todos os dias.</div>
+<div style="font-size:26px;font-weight:900;line-height:1.2">Atendimento inteligente para o seu negócio</div>
+<div style="color:#4a7a5a;font-size:14px;line-height:1.6">Seu cliente manda mensagem — a IA responde na hora, 24h por dia, todos os dias.</div>
 <div style="background:rgba(10,92,46,0.2);border:1px solid #0a5c2e;border-radius:20px;padding:8px 18px;color:#4a9e6a;font-size:13px;font-weight:600">✨ 7 dias de teste gratuito</div>
-<div style="background:#0a1f10;border:1px solid #0f2d18;border-radius:12px;padding:10px 16px;color:#4a7a5a;font-size:12px;line-height:1.6;text-align:left;width:100%">
-⚠️ <strong style="color:#fff">Período de demonstração</strong> — Durante os 7 dias você testa a IA diretamente neste app. Após contratar, seu atendente é ativado no WhatsApp real do seu negócio.
+<div style="background:#0a1f10;border:1px solid #0f2d18;border-radius:12px;padding:12px 16px;color:#4a7a5a;font-size:12px;line-height:1.7;text-align:left;width:100%">
+⚠️ <strong style="color:#ccc">Período de demonstração</strong> — Durante os 7 dias você testa a IA diretamente neste app. Após contratar, seu atendente é ativado no WhatsApp real do seu negócio.
 </div>
 </div>
 <div class="feat"><div class="fico">⚡</div><div><div style="font-size:15px;font-weight:700;margin-bottom:3px">Resposta imediata</div><div style="color:#4a7a5a;font-size:13px">Nenhum cliente fica sem resposta, mesmo fora do horário</div></div></div>
-<div class="feat"><div class="fico">📅</div><div><div style="font-size:15px;font-weight:700;margin-bottom:3px">Agendamento automático</div><div style="color:#4a7a5a;font-size:13px">Marca horários e coleta informações sem você precisar fazer nada</div></div></div>
+<div class="feat"><div class="fico">📅</div><div><div style="font-size:15px;font-weight:700;margin-bottom:3px">Agendamento automático</div><div style="color:#4a7a5a;font-size:13px">Marca horários e coleta informações sem você fazer nada</div></div></div>
 <div class="feat"><div class="fico">🧠</div><div><div style="font-size:15px;font-weight:700;margin-bottom:3px">Treinado para o seu negócio</div><div style="color:#4a7a5a;font-size:13px">Conhece seus serviços, preços, horários e endereço</div></div></div>
 <button class="btn" onclick="document.getElementById('S1').style.display='none';document.getElementById('S2').style.display='block'">Começar demonstração gratuita →</button>
 <div style="color:#1a3d28;font-size:12px;text-align:center">Configure em 2 minutos. Sem cartão de crédito.</div>
@@ -79,22 +80,53 @@ textarea.inp{resize:vertical;height:65px}
 <button style="background:none;border:none;color:#4a7a5a;font-size:16px;cursor:pointer" onclick="document.getElementById('S1').style.display='block';document.getElementById('S2').style.display='none'">← Voltar</button>
 <div style="font-size:22px;font-weight:800;text-align:center">Configure seu atendente</div>
 <div style="color:#4a7a5a;font-size:13px;text-align:center">Preencha com os dados do seu negócio</div>
+
 <div class="card">
-<div class="lbl">Nome do negócio *</div>
-<input class="inp" id="fn" placeholder="Ex: Salão da Ana, Clínica Saúde Total...">
-<div class="lbl">WhatsApp * (com DDD, só números)</div>
-<input class="inp" id="fp" placeholder="Ex: 85986897912" type="tel">
-<div class="lbl">Segmento *</div>
-<div class="grid4" id="sg"></div>
-<div class="lbl">Horário de funcionamento</div>
-<input class="inp" id="fh" placeholder="Ex: Seg-Sex 8h às 18h, Sáb 8h às 12h">
-<div class="lbl">Endereço</div>
-<input class="inp" id="fa" placeholder="Ex: Rua das Flores, 123 - Centro, Fortaleza">
-<div class="lbl">Serviços e preços</div>
-<textarea class="inp" id="fs" placeholder="Ex: Corte R$60, Escova R$50, Coloração R$150..."></textarea>
-<div class="lbl">Informações adicionais</div>
-<textarea class="inp" id="fe" placeholder="Ex: Aceitamos PIX e cartão. Agendamento obrigatório."></textarea>
+
+  <div class="field">
+    <div class="lbl">📛 Nome do negócio *</div>
+    <div class="hint">Como seu negócio se chama. Ex: Salão da Ana, Clínica Saúde Já, Pizzaria Boa Mesa</div>
+    <input class="inp" id="fn" placeholder="Digite o nome do seu negócio">
+  </div>
+
+  <div class="field">
+    <div class="lbl">📱 WhatsApp * (com DDD)</div>
+    <div class="hint">Número com DDD, só números, sem espaço ou traço. Ex: 85986897912</div>
+    <input class="inp" id="fp" placeholder="Ex: 85986897912" type="tel">
+  </div>
+
+  <div class="field">
+    <div class="lbl">🏢 Tipo de negócio *</div>
+    <div class="hint">Toque no ícone que representa seu negócio</div>
+    <div class="grid4" id="sg"></div>
+  </div>
+
+  <div class="field">
+    <div class="lbl">🕐 Horário de funcionamento</div>
+    <div class="hint">Dias e horários que você atende. Ex: Seg a Sex das 8h às 18h, Sáb das 8h às 12h</div>
+    <input class="inp" id="fh" placeholder="Ex: Seg-Sex 8h às 18h, Sáb 8h às 12h">
+  </div>
+
+  <div class="field">
+    <div class="lbl">📍 Endereço completo</div>
+    <div class="hint">Rua, número, bairro e cidade. Ex: Rua das Flores, 123 - Centro, Fortaleza-CE</div>
+    <input class="inp" id="fa" placeholder="Ex: Rua das Flores, 123 - Centro, Fortaleza">
+  </div>
+
+  <div class="field">
+    <div class="lbl">💰 Serviços e preços</div>
+    <div class="hint">Liste tudo que você oferece com os valores. Quanto mais detalhado, melhor a IA atende</div>
+    <textarea class="inp" id="fs" placeholder="Ex: Corte feminino R$60, Escova R$50, Coloração R$150, Manicure R$35, Pedicure R$40..."></textarea>
+  </div>
+
+  <div class="field">
+    <div class="lbl">ℹ️ Informações importantes</div>
+    <div class="hint">Formas de pagamento, se precisa agendar, estacionamento, qualquer info relevante</div>
+    <textarea class="inp" id="fe" placeholder="Ex: Aceitamos PIX, cartão e dinheiro. Agendamento obrigatório. Estacionamento gratuito."></textarea>
+  </div>
+
 </div>
+
 <button class="btn" onclick="doSetup()">Ativar demonstração 🚀</button>
 <div style="color:#1a3d28;font-size:12px;text-align:center">Sem cartão. Cancele quando quiser.</div>
 </div>
@@ -123,31 +155,27 @@ textarea.inp{resize:vertical;height:65px}
 <div id="S4" class="page">
 <div class="wrap">
 <div style="text-align:center;padding:8px 0">
-<div style="font-size:13px;font-weight:700;color:#4a9e6a;letter-spacing:2px;text-transform:uppercase">AtendIA</div>
+<div style="font-size:15px;font-weight:800;color:#4a9e6a;letter-spacing:3px;text-transform:uppercase">AtendIA</div>
 </div>
 <div class="pwc">
 <div style="font-size:44px">🔒</div>
 <div style="font-size:22px;font-weight:800">Demonstração encerrada</div>
 <div style="color:#4a7a5a;font-size:14px;line-height:1.6;max-width:300px">Seu período de teste acabou. Assine agora para ativar o atendente no WhatsApp real do seu negócio.</div>
-
 <div class="pxb">
-<div style="color:#4a9e6a;font-size:12px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.8px">Como assinar</div>
+<div style="color:#4a9e6a;font-size:11px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.8px">Como assinar</div>
 <div style="color:#4a7a5a;font-size:13px;line-height:1.9">
 <strong style="color:#fff">Passo 1</strong> — Faça o PIX para o número abaixo<br>
 <span style="font-size:20px;font-weight:900;color:#4a9e6a;letter-spacing:1px">(85) 98689-7912</span><br><br>
 <strong style="color:#fff">Passo 2</strong> — Envie o comprovante pelo WhatsApp<br>
-<strong style="color:#fff">Passo 3</strong> — Receba seu código de acesso e ative aqui
+<strong style="color:#fff">Passo 3</strong> — Receba seu código e ative aqui
 </div>
 </div>
-
 <a href="https://wa.me/5585986897912?text=Olá!%20Quero%20assinar%20o%20AtendIA.%20Segue%20o%20comprovante." style="display:block;background:#0a5c2e;color:#fff;text-align:center;padding:14px;border-radius:14px;font-weight:800;font-size:15px;text-decoration:none;width:100%;box-sizing:border-box">
 📲 Enviar comprovante no WhatsApp
 </a>
-
 <button class="btn2" onclick="document.getElementById('code-area').style.display='flex';this.style.display='none'">
 ✅ Já paguei — inserir código
 </button>
-
 <div id="code-area" style="display:none;flex-direction:column;gap:12px;width:100%">
 <div class="lbl">Código de acesso</div>
 <input class="ki" id="ki" placeholder="XXXXXXXX" maxlength="8" oninput="this.value=this.value.toUpperCase()">
@@ -164,20 +192,21 @@ textarea.inp{resize:vertical;height:65px}
 <div style="display:flex;justify-content:center;padding:20px 16px;min-height:100vh;background:#030d06">
 <div class="ac">
 <div style="text-align:center;margin-bottom:4px">
-<div style="font-size:13px;font-weight:700;color:#4a9e6a;letter-spacing:2px;text-transform:uppercase">AtendIA</div>
+<div style="font-size:15px;font-weight:800;color:#4a9e6a;letter-spacing:3px;text-transform:uppercase">AtendIA</div>
 </div>
 <div style="font-size:32px;text-align:center">🔑</div>
 <div style="font-size:20px;font-weight:800;text-align:center">Painel do Administrador</div>
-<div style="color:#4a7a5a;font-size:13px;text-align:center">Gere o código de acesso após confirmar o pagamento</div>
+<div style="color:#4a7a5a;font-size:13px;text-align:center">Gere o código após confirmar o pagamento</div>
 <div>
-<div class="lbl" style="margin-bottom:6px">WhatsApp do cliente</div>
+<div class="lbl" style="margin-bottom:4px">WhatsApp do cliente</div>
+<div class="hint" style="margin-bottom:6px">O mesmo número que o cliente cadastrou no app</div>
 <input class="inp" id="ap" placeholder="Ex: 85986897912" type="tel">
 </div>
 <div>
 <div class="lbl" style="margin-bottom:8px">Plano contratado</div>
-<button class="planBtn on" id="p30" onclick="selectPlan(30,this)">📅 Mensal — 30 dias</button>
-<button class="planBtn" id="p180" onclick="selectPlan(180,this)">📆 Semestral — 6 meses</button>
-<button class="planBtn" id="p365" onclick="selectPlan(365,this)">🗓️ Anual — 12 meses</button>
+<button class="planBtn on" onclick="selectPlan(30,this)">📅 Mensal — 30 dias</button>
+<button class="planBtn" onclick="selectPlan(180,this)">📆 Semestral — 6 meses</button>
+<button class="planBtn" onclick="selectPlan(365,this)">🗓️ Anual — 12 meses</button>
 </div>
 <button class="btn" onclick="doGen()">Gerar código de acesso →</button>
 <div class="cr" id="cr">
@@ -187,7 +216,7 @@ textarea.inp{resize:vertical;height:65px}
 <button style="background:#0a1f10;border:1px solid #0f2d18;border-radius:8px;color:#4a9e6a;padding:10px 18px;font-size:13px;cursor:pointer;font-weight:600" onclick="doCopy()">📋 Copiar mensagem para o cliente</button>
 </div>
 <div style="background:#0a1f10;border:1px solid #0f2d18;border-radius:12px;padding:16px">
-<div style="color:#4a9e6a;font-size:12px;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.8px">⚙️ Fluxo de ativação</div>
+<div style="color:#4a9e6a;font-size:11px;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.8px">⚙️ Fluxo de ativação</div>
 <div style="color:#4a7a5a;font-size:12px;line-height:1.9">
 1. Cliente testa 7 dias gratuitamente<br>
 2. Acesso é bloqueado automaticamente<br>
@@ -232,7 +261,7 @@ try{
 function doSetup(){
   const name=document.getElementById("fn").value.trim();
   const phone=document.getElementById("fp").value.replace(/\D/g,"");
-  if(!name||!sel||!phone){alert("Preencha nome, WhatsApp e segmento!");return;}
+  if(!name||!sel||!phone){alert("Preencha nome, WhatsApp e tipo de negócio!");return;}
   const info=["Horário: "+document.getElementById("fh").value.trim(),"Endereço: "+document.getElementById("fa").value.trim(),"Serviços: "+document.getElementById("fs").value.trim(),document.getElementById("fe").value.trim()].filter(x=>x.length>10).join(". ");
   ud={businessName:name,segment:sel,phone,extra:info,startDate:new Date().toISOString()};
   localStorage.setItem("bd",JSON.stringify(ud));
@@ -244,7 +273,7 @@ function startChat(d,days,trial){
   document.getElementById("cnm").textContent=d.businessName;
   const c=days<=3?"#EF4444":"#4a9e6a";
   const bg=document.getElementById("cbg");
-  bg.textContent=trial?"Demonstração — "+days+"d restantes":days+"d restantes";
+  bg.textContent=trial?"Demonstração — "+days+"d":days+"d restantes";
   bg.style.cssText="border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;background:"+c+"22;color:"+c+";border:1px solid "+c+"44";
   if(days<=3){const b=document.getElementById("cbn");b.style.display="block";b.innerHTML="⚠️ Demonstração expira em <strong>"+days+" dia"+(days!==1?"s":"")+"</strong>. Assine para continuar.";}
   hist=[];document.getElementById("ms").innerHTML="";
@@ -258,25 +287,4 @@ function showTyping(){const d=document.getElementById("ms");const v=document.cre
 function hideTyping(){const t=document.getElementById("typ");if(t)t.remove();}
 
 async function doSend(){
-  const inp=document.getElementById("ci");const txt=inp.value.trim();
-  if(!txt||!ud)return;
-  inp.value="";addUser(txt);showTyping();
-  const sys=(PR[ud.segment]||PR["Serviços"])+"\n\nNegócio: "+ud.businessName+".\n"+(ud.extra?"Info: "+ud.extra:"");
-  const contents=hist.map(m=>({role:m.r==="a"?"model":"user",parts:[{text:m.t}]}));
-  contents.push({role:"user",parts:[{text:txt}]});
-  try{
-    const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="+GK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents})});
-    const js=await res.json();
-    const reply=js.candidates?.[0]?.content?.parts?.[0]?.text||"Desculpe, tente novamente.";
-    hist.push({r:"u",t:txt});hist.push({r:"a",t:reply});
-    hideTyping();addBot(reply);
-  }catch(e){hideTyping();addBot("Erro de conexão.");}
-}
-
-function doUnlock(){
-  const code=document.getElementById("ki").value.toUpperCase();
-  const msg=document.getElementById("km");
-  const v30=code===makeCode(ud?.phone,30);
-  const v180=code===makeCode(ud?.phone,180);
-  const v365=code===makeCode(ud?.phone,365);
-  const day
+  const inp=document.getElementById("ci");const txt=in
